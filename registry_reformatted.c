@@ -1,7 +1,6 @@
 #include<windows.h>
 #include<stdio.h>
 int persistence(const char *reg_key, const char *value){
-    char* number = 0x00000000; 
     HKEY key;
     LSTATUS rc = RegOpenKeyEx(HKEY_LOCAL_MACHINE, TEXT(reg_key), 0, KEY_SET_VALUE, &key);
     if(ERROR_SUCCESS != rc){

